@@ -6,9 +6,11 @@ from email.message import EmailMessage
 import smtplib
 import random
 import os
-db_creds = "yaniv:Dvg2246mx1@coffeebot"
-env1 = "coffeebotya@gmail.com"
-env2 = "zjoi aobj iyae kypy "
+from dotenv import load_dotenv
+load_dotenv()
+db_creds = os.getenv("db_creds")
+env1 = os.getenv("env1")
+env2 = os.getenv("env2")
 print("Hello and welcome to our Coffee Bot version 1.0 Developed by Amir Haziza.\n\n"
       "Your Coffee orders will sent from our bot to our working department kitchen directly.\n")
 client = pymongo.MongoClient(f"mongodb+srv://{db_creds}.l2zbb.mongodb.net/?retryWrites=true&w=majority")
