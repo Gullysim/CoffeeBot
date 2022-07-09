@@ -60,12 +60,37 @@ def register(email,code):
 def sign_up(email,user_name,password):
       data = {"Type": "Registered", "Email": f"{email}", "Username": f'{user_name}', "Password": f'{password}'}
       database.insert_one(data)
+
+def Auth1(inp_a,inp_b):
+
+
+    for i in database.find({"Type":"Registered"}):
+        a = i["Username"]
+        b = i["Password"]
+        db = {f'{a}',f'{b}'}
+        for key in db:
+            if inp_a == a and inp_b == b:
+                lo  = True
+                return lo
+            else:
+                lo = False
+    return lo  
 def main():
       try:
             hello(name,surname)
-            usr = input("Would you like to register to our CoffeeBot? Y\\N --> ")
+            usr = input("Would you like to register to our CoffeeBot? Y\\N\n"
+            "If you allready registred please press --> \R INSERT HERE ")
             if usr == 'n' or usr == 'N':
                   print("Continuing as guest...")
+            elif usr == 'r' or usr == 'R':
+                  inp_a = input("-->")
+                  inp_b = input("-->")
+                  login = Auth1(inp_a,inp_b)
+                  if login == True:
+                        print("Logged in successfully!! PLEASE ENJOY.")
+                  elif login == False:
+                        print("Logged in failed!! ACCESS DENIED.")
+
             elif usr == 'Y' or usr == 'y':
                   user_name = input("Please insert your user name here --> ")
                   password = input("Please insert your password here --> ")
