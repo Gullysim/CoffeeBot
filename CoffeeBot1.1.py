@@ -6,6 +6,7 @@ from email.message import EmailMessage
 import smtplib
 import random
 import os
+import Clock
 from dotenv import load_dotenv
 load_dotenv()
 db_creds = os.getenv("db_creds")
@@ -122,7 +123,16 @@ def main():
             exit()
       else:
             main()
+
 main()
+
+
+if __name__ == '__main__':
+      main()
+root = tk.Tk()
+app = TestApp(root)
+app.pack()
+root.mainloop()
 
 
 
